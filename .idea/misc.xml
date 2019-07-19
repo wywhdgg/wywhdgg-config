@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/wywhdgg-conf-spingmvc" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/wywhdgg-conf-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/wywhdgg-conf-core/pom.xml" />
+        <option value="$PROJECT_DIR$/wywhdgg-conf-spingmvc/pom.xml" />
+        <option value="$PROJECT_DIR$/wywhdgg-conf-spingboot/pom.xml" />
       </list>
     </option>
   </component>

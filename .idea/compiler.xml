@@ -6,7 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wywhdgg-config" />
+        <module name="wywhdgg-conf-admin" />
+        <module name="wywhdgg-conf-core" />
+        <module name="wywhdgg-conf-spingboot" />
+        <module name="wywhdgg-conf-spingmvc" />
       </profile>
     </annotationProcessing>
   </component>
