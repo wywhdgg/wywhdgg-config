@@ -13,6 +13,7 @@
     <module>wywhdgg-conf-core</module>
     <module>wywhdgg-api</module>
     <module>wywhdgg-service</module>
+    <module>wywhdgg-common</module>
   </modules>
 
   <properties>

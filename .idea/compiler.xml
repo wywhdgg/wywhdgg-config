@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="wywhdgg-api" />
+        <module name="wywhdgg-common" />
         <module name="wywhdgg-conf-admin" />
         <module name="wywhdgg-conf-core" />
         <module name="wywhdgg-conf-spingboot" />

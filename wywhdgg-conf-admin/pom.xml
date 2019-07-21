@@ -34,6 +34,12 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>com.wywhdgg.dzb</groupId>
+      <artifactId>wywhdgg-common</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+
     <!--依赖报包-->
     <dependency>
       <groupId>com.wywhdgg.dzb</groupId>
@@ -93,12 +99,7 @@
       <version>${mysql-connector-java.version}</version>
     </dependency>
 
-    <!-- commons-lang3 -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
-    </dependency>
+
 
 
     <!-- devtools -->
