@@ -6,14 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wywhdgg-api" />
-        <module name="wywhdgg-common" />
         <module name="wywhdgg-conf-admin" />
+        <module name="wywhdgg-conf-api" />
+        <module name="wywhdgg-conf-common" />
         <module name="wywhdgg-conf-core" />
+        <module name="wywhdgg-conf-service" />
         <module name="wywhdgg-conf-spingboot" />
         <module name="wywhdgg-conf-spingmvc" />
-        <module name="wywhdgg-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wywhdgg-api" target="1.8" />
+      <module name="wywhdgg-common" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -11,9 +11,10 @@
      <module>wywhdgg-conf-admin</module>
     <module>wywhdgg-conf-spingmvc</module>
     <module>wywhdgg-conf-core</module>
-    <module>wywhdgg-api</module>
-    <module>wywhdgg-service</module>
-    <module>wywhdgg-common</module>
+    <module>wywhdgg-conf-api</module>
+    <module>wywhdgg-conf-service</module>
+    <module>wywhdgg-conf-common</module>
+    <module>wywhdgg-conf-core</module>
   </modules>
 
   <properties>

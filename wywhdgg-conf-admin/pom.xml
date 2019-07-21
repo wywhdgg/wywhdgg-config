@@ -36,21 +36,21 @@
 
     <dependency>
       <groupId>com.wywhdgg.dzb</groupId>
-      <artifactId>wywhdgg-common</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <artifactId>wywhdgg-conf-common</artifactId>
+      <version>${parent.version}</version>
     </dependency>
 
     <!--依赖报包-->
     <dependency>
       <groupId>com.wywhdgg.dzb</groupId>
-      <artifactId>wywhdgg-service</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <artifactId>wywhdgg-conf-service</artifactId>
+      <version>${parent.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.wywhdgg.dzb</groupId>
-      <artifactId>wywhdgg-api</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <artifactId>wywhdgg-conf-api</artifactId>
+      <version>${parent.version}</version>
     </dependency>
 
     <dependency>

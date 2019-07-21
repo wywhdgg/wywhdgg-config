@@ -7,9 +7,20 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>wywhdgg-common</artifactId>
+  <artifactId>wywhdgg-conf-api</artifactId>
 
 <dependencies>
+
+  <dependency>
+    <groupId>com.wywhdgg.dzb</groupId>
+    <artifactId>wywhdgg-conf-common</artifactId>
+    <version>${parent.version}</version>
+  </dependency>
+  <!-- freemarker-starter -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
 
 
 </dependencies>
