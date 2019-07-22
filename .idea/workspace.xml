@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cf83221-0c3b-419e-8a3b-c25e1238fcf1" name="Default Changelist" comment="项目更改名称">
-      <change afterPath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfEnvServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/ConfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/ConfController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/EnvController.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/EnvController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/CookieInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/CookieInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/mybatis/mapper/ConfNodeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/mybatis/mapper/ConfNodeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/templates/help.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/templates/help.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/object" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/object" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfEnvService.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfEnvService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfNodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfNodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/ConfNodeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/ConfProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/ConfUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -98,51 +81,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WywhdggConfAdminApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/WywhdggConfAdminApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/templates/login.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/IndexController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnvInterceptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/EnvInterceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-231">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PermissionInterceptor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/PermissionInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -152,11 +90,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebMvcConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebMvcConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/WebMvcConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="84">
               <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="54" column="36" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfNodeServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="497" column="49" selection-start-line="497" selection-start-column="49" selection-end-line="497" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2268#2269#0" expanded="true" />
+                <element signature="e#2349#2350#0" expanded="true" />
+                <element signature="e#3213#3229#0" expanded="true" />
+                <element signature="e#3936#3952#0" expanded="true" />
+                <element signature="e#12277#12293#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfNodeMsgDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/dao/ConfNodeMsgDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfNodeMsg.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/entity/ConfNodeMsg.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InitializingBean.java" pinned="false" current-in-tab="false">
+        <entry file="jar://D:/maven/repository/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/InitializingBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisposableBean.java" pinned="false" current-in-tab="false">
+        <entry file="jar://D:/maven/repository/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/DisposableBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -183,30 +183,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/config/LoginConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CookieInterceptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/CookieInterceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -221,10 +197,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ccom</find>
-      <find>XXL_CONF_CURRENT_ENV</find>
-      <find>jackson-core</find>
-      <find>jackson</find>
       <find>jackson.version</find>
       <find>xxlConfUser</find>
       <find>syncConf</find>
@@ -251,6 +223,10 @@
       <find>使用教程</find>
       <find>modelAndView</find>
       <find>cookieMap</find>
+      <find>setFileConfData</find>
+      <find>xxlConfNode</find>
+      <find>confBeatTime</find>
+      <find>cleanMessage</find>
     </findStrings>
     <replaceStrings>
       <replace>entity</replace>
@@ -307,7 +283,6 @@
         <option value="$PROJECT_DIR$/wywhdgg-conf-api/pom.xml" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfEnvServiceImpl.java" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfEnvService.java" />
-        <option value="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/controller/EnvController.java" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/serivce/ConfNodeService.java" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/object" />
@@ -322,6 +297,7 @@
         <option value="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/templates/help.ftl" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/CookieInterceptor.java" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -419,56 +395,6 @@
               <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg" type="462c0819:PsiDirectoryNode" />
-              <item name="dzb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg" type="462c0819:PsiDirectoryNode" />
-              <item name="dzb" type="462c0819:PsiDirectoryNode" />
-              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
-              <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -476,9 +402,7 @@
               <item name="wywhdgg-config" type="462c0819:PsiDirectoryNode" />
               <item name="wywhdgg-conf-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wywhdgg-config" type="b2602c69:ProjectViewProjectNode" />
@@ -759,7 +683,7 @@
       <workItem from="1563529597086" duration="1705000" />
       <workItem from="1563694503683" duration="13901000" />
       <workItem from="1563720892400" duration="4029000" />
-      <workItem from="1563806501972" duration="4001000" />
+      <workItem from="1563806501972" duration="4768000" />
     </task>
     <task id="LOCAL-00001" summary="管理后台">
       <created>1563724242733</created>
@@ -812,7 +736,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24101000" />
+    <option name="totallyTimeSpent" value="24868000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -838,7 +762,7 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.48862407" />
-      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.4734561" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
@@ -847,8 +771,8 @@
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.5092091" />
       <window_info anchor="bottom" id="Spring" order="9" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6695558" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.70964247" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21375267" />
       <window_info anchor="right" id="Bean Validation" order="0" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
@@ -863,7 +787,7 @@
     <layout-to-restore>
       <window_info id="Designer" order="4" />
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5092091" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5092091" />
       <window_info anchor="bottom" id="Spring" order="9" weight="0.32936078" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -871,12 +795,12 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6695558" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.70964247" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.4734561" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
@@ -891,7 +815,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.48862407" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.48862407" />
       <window_info anchor="right" id="Bean Validation" order="0" />
     </layout-to-restore>
   </component>
@@ -912,32 +836,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-common/src/main/java/com/wywhdgg/dzb/util/RegexUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-common/src/main/java/com/wywhdgg/dzb/util/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/maven/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar!/org/slf4j/Logger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2013">
-          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/util/PropUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2673" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/manager/ConfZKManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2245">
@@ -1154,13 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfProjectServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
@@ -1203,21 +1094,6 @@
           <caret line="131" column="14" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="541" column="39" lean-forward="true" selection-start-line="541" selection-start-column="39" selection-end-line="541" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2268#2269#0" expanded="true" />
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#3213#3229#0" expanded="true" />
-            <element signature="e#3936#3952#0" expanded="true" />
-            <element signature="e#12277#12293#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1327,8 +1203,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/java/com/wywhdgg/dzb/interceptor/WebMvcConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="84">
           <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-admin/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="54" column="36" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/maven/repository/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/DisposableBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/maven/repository/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/InitializingBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/service/impl/ConfNodeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="497" column="49" selection-start-line="497" selection-start-column="49" selection-end-line="497" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2268#2269#0" expanded="true" />
+            <element signature="e#2349#2350#0" expanded="true" />
+            <element signature="e#3213#3229#0" expanded="true" />
+            <element signature="e#3936#3952#0" expanded="true" />
+            <element signature="e#12277#12293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-service/src/main/java/com/wywhdgg/dzb/dao/ConfNodeMsgDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wywhdgg-conf-api/src/main/java/com/wywhdgg/dzb/entity/ConfNodeMsg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>

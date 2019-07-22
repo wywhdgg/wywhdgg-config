@@ -452,6 +452,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        log.info("afterPropertiesSet.......");
         startThead();
     }
 
