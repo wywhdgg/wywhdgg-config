@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *@author dzb
  *@date 2019/7/21 22:27
  *@Description:  WebMvcConfigurerAdapter 废弃
+ * 拦截器 -配置列表
  *@version 1.0
  */
 @Configuration
@@ -24,6 +25,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //注册拦截器，添加匹配的资源
         registry.addInterceptor(permissionInterceptor).addPathPatterns("/**");
         registry.addInterceptor(envInterceptor).addPathPatterns("/**");
         registry.addInterceptor(cookieInterceptor).addPathPatterns("/**");

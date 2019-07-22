@@ -1,6 +1,5 @@
 package com.wywhdgg.dzb.controller;
 
-
 import com.wywhdgg.dzb.annotation.PermessionLimit;
 import com.wywhdgg.dzb.constants.LoginConfigConstants;
 import com.wywhdgg.dzb.entity.ConfNode;
@@ -32,9 +31,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 @Controller
 @RequestMapping("/conf")
 public class ConfController {
-
     public static final String CURRENT_ENV = "XXL_CONF_CURRENT_ENV";
-
     @Resource
     private ConfProjectService confProjectService;
     @Resource
@@ -131,9 +128,8 @@ public class ConfController {
 
 		return confNodeService.syncConf(appname, xxlConfUser, loginEnv);
 	}*/
-
     // ---------------------- rest api ----------------------
-    @Value("${xxl.conf.access.token}")
+    @Value("${conf.access.token}")
     private String accessToken;
 
     /**

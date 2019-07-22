@@ -1,4 +1,4 @@
-package com.wywhdgg.dzb.service;
+package com.wywhdgg.dzb.service.impl;
 
 import com.wywhdgg.dzb.dao.ConfEnvDao;
 import com.wywhdgg.dzb.dao.ConfNodeDao;
@@ -48,17 +48,17 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
 
     @Resource
-    private ConfNodeDao xxlConfNodeDao;
+    private ConfNodeDao confNodeDao;
     @Resource
-    private ConfProjectDao xxlConfProjectDao;
+    private ConfProjectDao confProjectDao;
     /*@Resource
-    private ConfZKManager xxlConfZKManager;*/
+    private ConfZKManager confZKManager;*/
     @Resource
-    private ConfNodeLogDao xxlConfNodeLogDao;
+    private ConfNodeLogDao confNodeLogDao;
     @Resource
-    private ConfEnvDao xxlConfEnvDao;
+    private ConfEnvDao confEnvDao;
     @Resource
-    private ConfNodeMsgDao xxlConfNodeMsgDao;
+    private ConfNodeMsgDao confNodeMsgDao;
 
 
     @Value("${conf.confdata.filepath}")
@@ -68,6 +68,10 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
     private int confBeatTime = 30;
 
+    @Override
+    public int pageListCount(int offset, int pagesize, String env, String appname, String key) {
+        return confNodeDao.pageListCount(offset,pagesize,env,appname,key);
+    }
 
     @Override
     public boolean ifHasProjectPermission(ConfUser loginUser, String loginEnv, String appname){
@@ -98,14 +102,14 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             return emptyMap;
         }
 
-        // xxlConfNode in mysql
-        List<ConfNode> data = xxlConfNodeDao.pageList(offset, pagesize, loginEnv, appname, key);
-        int list_count = xxlConfNodeDao.pageListCount(offset, pagesize, loginEnv, appname, key);
+        // confNode in mysql
+        List<ConfNode> data = confNodeDao.pageList(offset, pagesize, loginEnv, appname, key);
+        int list_count = confNodeDao.pageListCount(offset, pagesize, loginEnv, appname, key);
 
         // fill value in zk
 		/*if (CollectionUtils.isNotEmpty(data)) {
 			for (ConfNode node: data) {
-				String realNodeValue = xxlConfZKManager.get(node.getEnv(), node.getKey());
+				String realNodeValue = confZKManager.get(node.getEnv(), node.getKey());
 				node.setZkValue(realNodeValue);
 			}
 		}*/
@@ -124,7 +128,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             if (StringUtils.isBlank(key)) {
             return new Result<String>(500, "参数缺失");
         }
-        ConfNode existNode = xxlConfNodeDao.load(loginEnv, key);
+        ConfNode existNode = confNodeDao.load(loginEnv, key);
         if (existNode == null) {
             return new Result<String>(500, "参数非法");
         }
@@ -134,9 +138,9 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             return new Result<String>(500, "您没有该项目的配置权限,请联系管理员开通");
         }
 
-        //xxlConfZKManager.delete(loginEnv, key);
-        xxlConfNodeDao.delete(loginEnv, key);
-        xxlConfNodeLogDao.deleteTimeout(loginEnv, key, 0);
+        //confZKManager.delete(loginEnv, key);
+        confNodeDao.delete(loginEnv, key);
+        confNodeLogDao.deleteTimeout(loginEnv, key, 0);
 
         // conf msg
         sendConfMsg(loginEnv, key, null);
@@ -152,88 +156,88 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         confNodeMsg.setKey(key);
         confNodeMsg.setValue(value);
 
-        xxlConfNodeMsgDao.add(confNodeMsg);
+        confNodeMsgDao.add(confNodeMsg);
     }
 
     @Override
-    public Result<String> add(ConfNode xxlConfNode, ConfUser loginUser, String loginEnv) {
+    public Result<String> add(ConfNode confNode, ConfUser loginUser, String loginEnv) {
 
         // valid
-        if (StringUtils.isBlank(xxlConfNode.getAppname())) {
+        if (StringUtils.isBlank(confNode.getAppname())) {
             return new Result<String>(500, "AppName不可为空");
         }
 
         // project permission
-        if (!ifHasProjectPermission(loginUser, loginEnv, xxlConfNode.getAppname())) {
+        if (!ifHasProjectPermission(loginUser, loginEnv, confNode.getAppname())) {
             return new Result<String>(500, "您没有该项目的配置权限,请联系管理员开通");
         }
 
         // valid group
-        ConfProject group = xxlConfProjectDao.load(xxlConfNode.getAppname());
+        ConfProject group = confProjectDao.load(confNode.getAppname());
         if (group==null) {
             return new Result<String>(500, "AppName非法");
         }
 
         // valid env
-        if (StringUtils.isBlank(xxlConfNode.getEnv())) {
+        if (StringUtils.isBlank(confNode.getEnv())) {
             return new Result<String>(500, "配置Env不可为空");
         }
-        ConfEnv xxlConfEnv = xxlConfEnvDao.load(xxlConfNode.getEnv());
-        if (xxlConfEnv == null) {
+        ConfEnv confEnv = confEnvDao.load(confNode.getEnv());
+        if (confEnv == null) {
             return new Result<String>(500, "配置Env非法");
         }
 
         // valid key
-        if (StringUtils.isBlank(xxlConfNode.getKey())) {
+        if (StringUtils.isBlank(confNode.getKey())) {
             return new Result<String>(500, "配置Key不可为空");
         }
-        xxlConfNode.setKey(xxlConfNode.getKey().trim());
+        confNode.setKey(confNode.getKey().trim());
 
-        ConfNode existNode = xxlConfNodeDao.load(xxlConfNode.getEnv(), xxlConfNode.getKey());
+        ConfNode existNode = confNodeDao.load(confNode.getEnv(), confNode.getKey());
         if (existNode != null) {
             return new Result<String>(500, "配置Key已存在，不可重复添加");
         }
-        if (!xxlConfNode.getKey().startsWith(xxlConfNode.getAppname())) {
+        if (!confNode.getKey().startsWith(confNode.getAppname())) {
             return new Result<String>(500, "配置Key格式非法");
         }
 
         // valid title
-        if (StringUtils.isBlank(xxlConfNode.getTitle())) {
+        if (StringUtils.isBlank(confNode.getTitle())) {
             return new Result<String>(500, "配置描述不可为空");
         }
 
         // value force null to ""
-        if (xxlConfNode.getValue() == null) {
-            xxlConfNode.setValue("");
+        if (confNode.getValue() == null) {
+            confNode.setValue("");
         }
 
         // add node
-        //xxlConfZKManager.set(xxlConfNode.getEnv(), xxlConfNode.getKey(), xxlConfNode.getValue());
-        xxlConfNodeDao.insert(xxlConfNode);
+        //confZKManager.set(confNode.getEnv(), confNode.getKey(), confNode.getValue());
+        confNodeDao.insert(confNode);
 
         // node log
         ConfNodeLog nodeLog = new ConfNodeLog();
-        nodeLog.setEnv(xxlConfNode.getEnv());
-        nodeLog.setKey(xxlConfNode.getKey());
-        nodeLog.setTitle(xxlConfNode.getTitle() + "(配置新增)" );
-        nodeLog.setValue(xxlConfNode.getValue());
+        nodeLog.setEnv(confNode.getEnv());
+        nodeLog.setKey(confNode.getKey());
+        nodeLog.setTitle(confNode.getTitle() + "(配置新增)" );
+        nodeLog.setValue(confNode.getValue());
         nodeLog.setOptuser(loginUser.getUsername());
-        xxlConfNodeLogDao.add(nodeLog);
+        confNodeLogDao.add(nodeLog);
 
         // conf msg
-        sendConfMsg(xxlConfNode.getEnv(), xxlConfNode.getKey(), xxlConfNode.getValue());
+        sendConfMsg(confNode.getEnv(), confNode.getKey(), confNode.getValue());
 
         return Result.SUCCESS;
     }
 
     @Override
-    public Result<String> update(ConfNode xxlConfNode, ConfUser loginUser, String loginEnv) {
+    public Result<String> update(ConfNode confNode, ConfUser loginUser, String loginEnv) {
 
         // valid
-        if (StringUtils.isBlank(xxlConfNode.getKey())) {
+        if (StringUtils.isBlank(confNode.getKey())) {
             return new Result<String>(500, "配置Key不可为空");
         }
-        ConfNode existNode = xxlConfNodeDao.load(xxlConfNode.getEnv(), xxlConfNode.getKey());
+        ConfNode existNode = confNodeDao.load(confNode.getEnv(), confNode.getKey());
         if (existNode == null) {
             return new Result<String>(500, "配置Key非法");
         }
@@ -243,21 +247,21 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             return new Result<String>(500, "您没有该项目的配置权限,请联系管理员开通");
         }
 
-        if (StringUtils.isBlank(xxlConfNode.getTitle())) {
+        if (StringUtils.isBlank(confNode.getTitle())) {
             return new Result<String>(500, "配置描述不可为空");
         }
 
         // value force null to ""
-        if (xxlConfNode.getValue() == null) {
-            xxlConfNode.setValue("");
+        if (confNode.getValue() == null) {
+            confNode.setValue("");
         }
 
         // update conf
-        //xxlConfZKManager.set(xxlConfNode.getEnv(), xxlConfNode.getKey(), xxlConfNode.getValue());
+        //confZKManager.set(confNode.getEnv(), confNode.getKey(), confNode.getValue());
 
-        existNode.setTitle(xxlConfNode.getTitle());
-        existNode.setValue(xxlConfNode.getValue());
-        int ret = xxlConfNodeDao.update(existNode);
+        existNode.setTitle(confNode.getTitle());
+        existNode.setValue(confNode.getValue());
+        int ret = confNodeDao.update(existNode);
         if (ret < 1) {
             return Result.FAIL;
         }
@@ -269,11 +273,11 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         nodeLog.setTitle(existNode.getTitle() + "(配置更新)" );
         nodeLog.setValue(existNode.getValue());
         nodeLog.setOptuser(loginUser.getUsername());
-        xxlConfNodeLogDao.add(nodeLog);
-        xxlConfNodeLogDao.deleteTimeout(existNode.getEnv(), existNode.getKey(), 10);
+        confNodeLogDao.add(nodeLog);
+        confNodeLogDao.deleteTimeout(existNode.getEnv(), existNode.getKey(), 10);
 
         // conf msg
-        sendConfMsg(xxlConfNode.getEnv(), xxlConfNode.getKey(), xxlConfNode.getValue());
+        sendConfMsg(confNode.getEnv(), confNode.getKey(), confNode.getValue());
 
         return Result.SUCCESS;
     }
@@ -282,11 +286,11 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 	public Result<String> syncConf(String appname, ConfUser loginUser, String loginEnv) {
 
 		// valid
-		ConfEnv xxlConfEnv = xxlConfEnvDao.load(loginEnv);
-		if (xxlConfEnv == null) {
+		ConfEnv confEnv = confEnvDao.load(loginEnv);
+		if (confEnv == null) {
 			return new Result<String>(500, "配置Env非法");
 		}
-		ConfProject group = xxlConfProjectDao.load(appname);
+		ConfProject group = confProjectDao.load(appname);
 		if (group==null) {
 			return new Result<String>(500, "AppName非法");
 		}
@@ -296,7 +300,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 			return new Result<String>(500, "您没有该项目的配置权限,请联系管理员开通");
 		}
 
-		List<ConfNode> confNodeList = xxlConfNodeDao.pageList(0, 10000, loginEnv, appname, null);
+		List<ConfNode> confNodeList = confNodeDao.pageList(0, 10000, loginEnv, appname, null);
 		if (CollectionUtils.isEmpty(confNodeList)) {
 			return new Result<String>(500, "操作失败，该项目下不存在配置项");
 		}
@@ -304,7 +308,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 		// un sync node
 		List<ConfNode> unSyncConfNodeList = new ArrayList<>();
 		for (ConfNode node: confNodeList) {
-			String realNodeValue = xxlConfZKManager.get(node.getEnv(), node.getKey());
+			String realNodeValue = confZKManager.get(node.getEnv(), node.getKey());
 			if (!node.getValue().equals(realNodeValue)) {
 				unSyncConfNodeList.add(node);
 			}
@@ -318,7 +322,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 		String logContent = "操作成功，共计同步 " + unSyncConfNodeList.size() + " 条配置：";
 		for (ConfNode node: unSyncConfNodeList) {
 
-			xxlConfZKManager.set(node.getEnv(), node.getKey(), node.getValue());
+			confZKManager.set(node.getEnv(), node.getKey(), node.getValue());
 
 			// node log
 			ConfNodeLog nodeLog = new ConfNodeLog();
@@ -327,8 +331,8 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 			nodeLog.setTitle(node.getTitle() + "(全量同步)" );
 			nodeLog.setValue(node.getValue());
 			nodeLog.setOptuser(loginUser.getUsername());
-			xxlConfNodeLogDao.add(nodeLog);
-			xxlConfNodeLogDao.deleteTimeout(node.getEnv(), node.getKey(), 10);
+			confNodeLogDao.add(nodeLog);
+			confNodeLogDao.deleteTimeout(node.getEnv(), node.getKey(), 10);
 
 			logContent += "<br>" + node.getKey();
 		}
@@ -477,7 +481,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                 while (!executorStoped) {
                     try {
                         // new message, filter readed
-                        List<ConfNodeMsg> messageList = xxlConfNodeMsgDao.findMsg(readedMessageIds);
+                        List<ConfNodeMsg> messageList = confNodeMsgDao.findMsg(readedMessageIds);
                         if (messageList!=null && messageList.size()>0) {
                             for (ConfNodeMsg message: messageList) {
                                 readedMessageIds.add(message.getId());
@@ -490,7 +494,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
                         // clean old message;
                         if ( (System.currentTimeMillis()/1000) % confBeatTime ==0) {
-                            xxlConfNodeMsgDao.cleanMessage(confBeatTime);
+                            confNodeMsgDao.cleanMessage(confBeatTime);
                             readedMessageIds.clear();
                         }
                     } catch (Exception e) {
@@ -539,7 +543,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                         int pagesize = 1000;
                         List<String> confDataFileList = new ArrayList<>();
 
-                        List<ConfNode> confNodeList = xxlConfNodeDao.pageList(offset, pagesize, null, null, null);
+                        List<ConfNode> confNodeList = confNodeDao.pageList(offset, pagesize, null, null, null);
                         while (confNodeList!=null && confNodeList.size()>0) {
 
                             for (ConfNode confNoteItem: confNodeList) {
@@ -553,7 +557,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
 
                             offset += 1000;
-                            confNodeList = xxlConfNodeDao.pageList(offset, pagesize, null, null, null);
+                            confNodeList = confNodeDao.pageList(offset, pagesize, null, null, null);
                         }
 
                         // clean old registry-data file
