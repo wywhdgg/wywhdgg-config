@@ -65,7 +65,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     private String confDataFilePath;
     @Value("${conf.access.token}")
     private String accessToken;
-
+    /**seconds*/
     private int confBeatTime = 30;
 
     @Override
@@ -452,7 +452,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("afterPropertiesSet.......");
         startThead();
     }
 
@@ -474,6 +473,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     public void startThead() throws Exception {
 
         /**
+         *   广播式 同步文件  添加，修改，删除操作。
          * brocast conf-data msg, sync to file, for "add、update、delete"
          */
         executorService.execute(new Runnable() {
@@ -486,8 +486,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                         if (messageList!=null && messageList.size()>0) {
                             for (ConfNodeMsg message: messageList) {
                                 readedMessageIds.add(message.getId());
-
-
                                 // sync file
                                 setFileConfData(message.getEnv(), message.getKey(), message.getValue());
                             }
@@ -538,7 +536,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                     }
 
                     try {
-
                         // sync registry-data, db + file
                         int offset = 0;
                         int pagesize = 1000;
@@ -546,25 +543,18 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
                         List<ConfNode> confNodeList = confNodeDao.pageList(offset, pagesize, null, null, null);
                         while (confNodeList!=null && confNodeList.size()>0) {
-
                             for (ConfNode confNoteItem: confNodeList) {
-
                                 // sync file
                                 String confDataFile = setFileConfData(confNoteItem.getEnv(), confNoteItem.getKey(), confNoteItem.getValue());
-
                                 // collect confDataFile
                                 confDataFileList.add(confDataFile);
                             }
-
-
                             offset += 1000;
                             confNodeList = confNodeDao.pageList(offset, pagesize, null, null, null);
                         }
-
                         // clean old registry-data file
                         cleanFileConfData(confDataFileList);
-
-                        log.debug(">>>>>>>>>>> xxl-conf, sync totel conf data success, sync conf count = {}", confDataFileList.size());
+                        log.debug("->>wywydgg-conf, sync total conf data success, sync conf count = {}", confDataFileList.size());
                     } catch (Exception e) {
                         if (!executorStoped) {
                             log.error(e.getMessage(), e);

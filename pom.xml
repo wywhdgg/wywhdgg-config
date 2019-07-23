@@ -14,7 +14,6 @@
     <module>wywhdgg-conf-api</module>
     <module>wywhdgg-conf-service</module>
     <module>wywhdgg-conf-common</module>
-    <module>wywhdgg-conf-core</module>
   </modules>
 
   <properties>
