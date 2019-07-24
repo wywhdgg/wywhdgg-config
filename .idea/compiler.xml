@@ -13,9 +13,19 @@
         <module name="wywhdgg-conf-service" />
         <module name="wywhdgg-conf-spingboot" />
         <module name="wywhdgg-conf-spingmvc" />
+        <module name="xxl-conf-admin" />
+        <module name="xxl-conf-core" />
+        <module name="xxl-conf-sample-frameless" />
+        <module name="xxl-conf-sample-jfinal" />
+        <module name="xxl-conf-sample-nutz" />
+        <module name="xxl-conf-sample-spring" />
+        <module name="xxl-conf-sample-springboot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="auto-config" target="1.8" />
+      <module name="config-core" target="1.7" />
+      <module name="spring-support" target="1.7" />
       <module name="wywhdgg-api" target="1.8" />
       <module name="wywhdgg-common" target="1.8" />
     </bytecodeTargetLevel>

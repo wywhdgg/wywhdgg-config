@@ -3,6 +3,9 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/wywhdgg-conf-spingmvc" />
+    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-jfinal" />
+    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-nutz" />
+    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-spring" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -12,7 +15,16 @@
         <option value="$PROJECT_DIR$/wywhdgg-conf-core/pom.xml" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-spingmvc/pom.xml" />
         <option value="$PROJECT_DIR$/wywhdgg-conf-spingboot/pom.xml" />
+        <option value="$PROJECT_DIR$/../autoconf/pom.xml" />
+        <option value="$PROJECT_DIR$/../xxl-conf/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/../autoconf/config-core/pom.xml" />
+        <option value="$PROJECT_DIR$/../autoconf/pom.xml" />
+        <option value="$PROJECT_DIR$/../autoconf/spring-support/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

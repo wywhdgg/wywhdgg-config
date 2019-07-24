@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../autoconf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autoconf/config-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autoconf/spring-support" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/wywhdgg-conf-core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-spingboot" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wywhdgg-conf-spingmvc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-frameless" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-jfinal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-nutz" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-spring" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-springboot" charset="UTF-8" />
   </component>
 </project>
