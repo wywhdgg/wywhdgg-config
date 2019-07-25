@@ -32,7 +32,7 @@ public class ConfLocalCache {
         //获取本地文件
         Map<String, String> mirrorConfData = ConfMirror.readConfMirror();
 
-        if (CollectionUtils.isEmpty(mirrorConfData)) {
+        if (!CollectionUtils.isEmpty(mirrorConfData)) {
             remoteConfData = ConfRemote.find(mirrorConfData.keySet());
             preConfData.putAll(mirrorConfData);
         }
@@ -52,7 +52,8 @@ public class ConfLocalCache {
             public void run() {
                 while (!refreshThreadStop) {
                     try {
-                        // refreshCacheAndMirror();
+                        //开启保存方法，本地镜像双向保存
+                        refreshCacheAndMirror();
                     } catch (Exception e) {
                         if (!refreshThreadStop && !(e instanceof InterruptedException)) {
                             log.error(">>>>>>>>>> wywhdgg-conf, refresh thread error.");
@@ -63,6 +64,16 @@ public class ConfLocalCache {
                 log.info(">>>>>>>>>> wywhdgg-conf, refresh thread stoped.");
             }
         });
+        /**
+         1.Thread.setDaemon(boolean on):设置为守护线程或者用户线程。
+
+         2.通过Thread.setDaemon(false)设置为用户线程,用于为系统中的其它对象和线程提供服务；
+         通过Thread.setDaemon(true)设置为守护线程,在没有用户线程可服务时会自动离开;如果不设置此属性，默认为用户线程。
+
+         3.setDaemon需要在start方法调用之前使用
+
+         4.用Thread.isDaemon()来返回是否是守护线程
+         **/
         refreshThread.setDaemon(true);
         refreshThread.start();
 

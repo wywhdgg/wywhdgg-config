@@ -81,11 +81,12 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * 但在Spring属性填充（来自显式属性或自动装配）
      * 之前执行操作。
      * url:https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/InstantiationAwareBeanPostProcessorAdapter.html
+     * 注释方式
      * **/
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
            log.info("bean={},beanName={}",bean,beanName);
-        // 1、Annotation('@XxlConf')：resolves conf + watch
+        // 1、Annotation('@Conf')：resolves conf + watch
         if (!beanName.equals(this.beanName)) {
 
             ReflectionUtils.doWithFields(bean.getClass(), new ReflectionUtils.FieldCallback() {
@@ -119,6 +120,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
 
     /**
      * 在工厂将它们应用于给定bean之前对给定属性值进行后处理，而不需要属性描述符。
+     * xml解析方式
      * */
     @Override
     public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
