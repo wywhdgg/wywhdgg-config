@@ -85,10 +85,8 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * **/
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-           log.info("bean={},beanName={}",bean,beanName);
         // 1、Annotation('@Conf')：resolves conf + watch
         if (!beanName.equals(this.beanName)) {
-
             ReflectionUtils.doWithFields(bean.getClass(), new ReflectionUtils.FieldCallback() {
                 @Override
                 public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
@@ -124,6 +122,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * */
     @Override
     public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
+        log.info("xml  begin init...... ");
         // 2、XML('$XxlConf{...}')：resolves placeholders + watch
         if (!beanName.equals(this.beanName)) {
 
@@ -171,6 +170,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * */
     @Override
     public void afterPropertiesSet() throws Exception {
+        log.info("factory begin init...... ");
         ConfBaseBeanFactory.init(adminAddress, env, accessToken, mirrorfile);
     }
 
@@ -181,6 +181,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * */
     @Override
     public void destroy() throws Exception {
+        log.info("object is destory ");
         ConfBaseBeanFactory.destroy();
     }
 

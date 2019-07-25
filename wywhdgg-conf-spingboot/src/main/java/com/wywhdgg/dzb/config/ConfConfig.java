@@ -27,7 +27,9 @@ public class ConfConfig {
     @Value("${conf.mirrorfile}")
     private String mirrorfile;
 
-
+   /**
+    * 注入链接
+    * */
     @Bean
     public ConfFactory initConfFactory() {
         ConfFactory confFactory = new ConfFactory();
