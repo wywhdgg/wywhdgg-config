@@ -93,7 +93,6 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
                         // resolves placeholders
                         BeanRefreshConfListener.BeanField beanField = new BeanRefreshConfListener.BeanField(beanName, propertyName);
                         refreshBeanField(beanField, confValue, bean);
-
                         // watch
                         if (conf.callback()) {
                             BeanRefreshConfListener.addBeanField(confKey, beanField);
@@ -185,7 +184,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      */
     public static void refreshBeanField(final BeanRefreshConfListener.BeanField beanField, final String value, Object bean) {
         if (bean == null) {
-            /**已优化：启动时禁止实用，getBean 会导致Bean提前初始化，风险较大；*/
+            /**已优化：启动时禁止使用，getBean 会导致Bean提前初始化，风险较大；*/
             bean = beanFactory.getBean(beanField.getBeanName());
         }
         if (bean == null) {

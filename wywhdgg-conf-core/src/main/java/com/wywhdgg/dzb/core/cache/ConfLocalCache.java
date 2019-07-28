@@ -33,11 +33,14 @@ public class ConfLocalCache {
         Map<String, String> mirrorConfData = ConfMirror.readConfMirror();
 
         if (!CollectionUtils.isEmpty(mirrorConfData)) {
+            //DB文件预加载
             remoteConfData = ConfRemote.find(mirrorConfData.keySet());
+            //本地文件
             preConfData.putAll(mirrorConfData);
         }
 
         if (remoteConfData != null && remoteConfData.size() > 0) {
+            //
             preConfData.putAll(remoteConfData);
         }
         if (preConfData != null && preConfData.size() > 0) {
@@ -103,7 +106,6 @@ public class ConfLocalCache {
             if (remoteDataMap != null && remoteDataMap.size() > 0) {
                 for (String remoteKey : remoteDataMap.keySet()) {
                     String remoteData = remoteDataMap.get(remoteKey);
-
                     CacheNode existNode = localCacheRepository.get(remoteKey);
                     if (existNode != null && existNode.getValue() != null && existNode.getValue().equals(remoteData)) {
                         log.debug(">>>>>>>>>> wywhdgg-conf: RELOAD unchange-pass [{}].", remoteKey);
