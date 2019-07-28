@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           	http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<context:property-placeholder location="classpath:application.properties" />
+
+	<!-- ********************************* XXL-CONF 配置工厂 ********************************* -->
+	<bean id="xxlConfFactory" class="com.wywhdgg.dzb.core.spring.ConfFactory"  >
+		<!-- 环境配置文件地址，如 "xxl-conf.properties" 或 "file:/data/webapps/xxl-conf.properties" -->
+		<property name="adminAddress" value="${conf.admin.address}" />
+		<property name="env" value="${conf.env}" />
+		<property name="accessToken" value="${conf.access.token}" />
+		<property name="mirrorfile" value="${conf.mirrorfile}" />
+	</bean>
+
+	<!-- ********************************* 测试示例（可删除） ********************************* -->
+	<bean id="demoConf" class="com.wywhdgg.dzb.demo.DemoConf">
+		<property name="paramByXml" value="$XxlConf{default.key03}" />
+	</bean>
+
+</beans>

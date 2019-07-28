@@ -236,10 +236,8 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
                     if (beanField.getProperty().equals(fieldItem.getName())) {
                         try {
                             Object valueObj = FieldReflectionUtil.parseValue(fieldItem.getType(), value);
-
                             fieldItem.setAccessible(true);
                             fieldItem.set(finalBean, valueObj);		// support mult data types
-
                             log.info(">>>>>>>>>>> wywhdgg-conf, refreshBeanField[field] success, {}#{}:{}",
                                 beanField.getBeanName(), beanField.getProperty(), value);
                         } catch (IllegalAccessException e) {

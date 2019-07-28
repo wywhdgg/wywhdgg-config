@@ -67,10 +67,10 @@ public class ConfController {
     public Map<String, Object> pageList(HttpServletRequest request, @RequestParam(required = false, defaultValue = "0") int start, @RequestParam(required = false, defaultValue = "10") int length,
         String appname, String key) {
 
-        ConfUser xxlConfUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
+        ConfUser confUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
         String loginEnv = (String) request.getAttribute(CURRENT_ENV);
 
-        return confNodeService.pageList(start, length, appname, key, xxlConfUser, loginEnv);
+        return confNodeService.pageList(start, length, appname, key, confUser, loginEnv);
     }
 
     /**
@@ -80,10 +80,10 @@ public class ConfController {
     @ResponseBody
     public Result<String> delete(HttpServletRequest request, String key) {
 
-        ConfUser xxlConfUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
+        ConfUser confUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
         String loginEnv = (String) request.getAttribute(CURRENT_ENV);
 
-        return confNodeService.delete(key, xxlConfUser, loginEnv);
+        return confNodeService.delete(key, confUser, loginEnv);
     }
 
     /**
@@ -91,15 +91,15 @@ public class ConfController {
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result<String> add(HttpServletRequest request, ConfNode xxlConfNode) {
+    public Result<String> add(HttpServletRequest request, ConfNode confNode) {
 
-        ConfUser xxlConfUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
+        ConfUser confUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
         String loginEnv = (String) request.getAttribute(CURRENT_ENV);
 
         // fill env
-        xxlConfNode.setEnv(loginEnv);
+        confNode.setEnv(loginEnv);
 
-        return confNodeService.add(xxlConfNode, xxlConfUser, loginEnv);
+        return confNodeService.add(confNode, confUser, loginEnv);
     }
 
     /**
@@ -107,15 +107,15 @@ public class ConfController {
      */
     @RequestMapping("/update")
     @ResponseBody
-    public Result<String> update(HttpServletRequest request, ConfNode xxlConfNode) {
+    public Result<String> update(HttpServletRequest request, ConfNode confNode) {
 
-        ConfUser xxlConfUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
+        ConfUser confUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
         String loginEnv = (String) request.getAttribute(CURRENT_ENV);
 
         // fill env
-        xxlConfNode.setEnv(loginEnv);
+        confNode.setEnv(loginEnv);
 
-        return confNodeService.update(xxlConfNode, xxlConfUser, loginEnv);
+        return confNodeService.update(confNode, confUser, loginEnv);
     }
 
 	/*@RequestMapping("/syncConf")
@@ -123,10 +123,10 @@ public class ConfController {
 	public Result<String> syncConf(HttpServletRequest request,
 										String appname) {
 
-		ConfUser xxlConfUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
+		ConfUser confUser = (ConfUser) request.getAttribute(LoginConfigConstants.LOGIN_IDENTITY);
 		String loginEnv = (String) request.getAttribute(CURRENT_ENV);
 
-		return confNodeService.syncConf(appname, xxlConfUser, loginEnv);
+		return confNodeService.syncConf(appname, confUser, loginEnv);
 	}*/
     // ---------------------- rest api ----------------------
     @Value("${conf.access.token}")

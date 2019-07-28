@@ -34,7 +34,6 @@ public class BeanRefreshConfListener implements ConfListener {
             }
         }
         beanFieldList.add(beanField);
-        log.info("beanFieldList={}",beanFieldList);
     }
 
     @Override

@@ -44,9 +44,7 @@ import org.springframework.web.context.request.async.DeferredResult;
  */
 @Slf4j
 @Service
-public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, DisposableBean {
-
-
+public class ConfNodeServiceImpl implements ConfNodeService, InitializingBean, DisposableBean {
     @Resource
     private ConfNodeDao confNodeDao;
     @Resource
@@ -59,38 +57,31 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     private ConfEnvDao confEnvDao;
     @Resource
     private ConfNodeMsgDao confNodeMsgDao;
-
-
     @Value("${conf.confdata.filepath}")
     private String confDataFilePath;
     @Value("${conf.access.token}")
     private String accessToken;
-    /**seconds*/
+    /** seconds */
     private int confBeatTime = 30;
 
     @Override
     public int pageListCount(int offset, int pagesize, String env, String appname, String key) {
-        return confNodeDao.pageListCount(offset,pagesize,env,appname,key);
+        return confNodeDao.pageListCount(offset, pagesize, env, appname, key);
     }
 
     @Override
-    public boolean ifHasProjectPermission(ConfUser loginUser, String loginEnv, String appname){
+    public boolean ifHasProjectPermission(ConfUser loginUser, String loginEnv, String appname) {
         if (loginUser.getPermission() == 1) {
             return true;
         }
-        if (ArrayUtils.contains(StringUtils.split(loginUser.getPermissionData(), ","), (appname.concat("#").concat(loginEnv)) )) {
+        if (ArrayUtils.contains(StringUtils.split(loginUser.getPermissionData(), ","), (appname.concat("#").concat(loginEnv)))) {
             return true;
         }
         return false;
     }
 
     @Override
-    public Map<String,Object> pageList(int offset,
-        int pagesize,
-        String appname,
-        String key,
-        ConfUser loginUser,
-        String loginEnv) {
+    public Map<String, Object> pageList(int offset, int pagesize, String appname, String key, ConfUser loginUser, String loginEnv) {
 
         // project permission
         if (StringUtils.isBlank(loginEnv) || StringUtils.isBlank(appname) || !ifHasProjectPermission(loginUser, loginEnv, appname)) {
@@ -117,15 +108,14 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         // package result
         Map<String, Object> maps = new HashMap<String, Object>();
         maps.put("data", data);
-        maps.put("recordsTotal", list_count);		// 总记录数
-        maps.put("recordsFiltered", list_count);	// 过滤后的总记录数
+        maps.put("recordsTotal", list_count);        // 总记录数
+        maps.put("recordsFiltered", list_count);    // 过滤后的总记录数
         return maps;
-
     }
 
     @Override
     public Result<String> delete(String key, ConfUser loginUser, String loginEnv) {
-            if (StringUtils.isBlank(key)) {
+        if (StringUtils.isBlank(key)) {
             return new Result<String>(500, "参数缺失");
         }
         ConfNode existNode = confNodeDao.load(loginEnv, key);
@@ -149,13 +139,11 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     }
 
     // conf broadcast msg
-    private void sendConfMsg(String env, String key, String value){
-
+    private void sendConfMsg(String env, String key, String value) {
         ConfNodeMsg confNodeMsg = new ConfNodeMsg();
         confNodeMsg.setEnv(env);
         confNodeMsg.setKey(key);
         confNodeMsg.setValue(value);
-
         confNodeMsgDao.add(confNodeMsg);
     }
 
@@ -174,7 +162,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 
         // valid group
         ConfProject group = confProjectDao.load(confNode.getAppname());
-        if (group==null) {
+        if (group == null) {
             return new Result<String>(500, "AppName非法");
         }
 
@@ -219,14 +207,12 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         ConfNodeLog nodeLog = new ConfNodeLog();
         nodeLog.setEnv(confNode.getEnv());
         nodeLog.setKey(confNode.getKey());
-        nodeLog.setTitle(confNode.getTitle() + "(配置新增)" );
+        nodeLog.setTitle(confNode.getTitle() + "(配置新增)");
         nodeLog.setValue(confNode.getValue());
         nodeLog.setOptuser(loginUser.getUsername());
         confNodeLogDao.add(nodeLog);
-
         // conf msg
         sendConfMsg(confNode.getEnv(), confNode.getKey(), confNode.getValue());
-
         return Result.SUCCESS;
     }
 
@@ -256,9 +242,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             confNode.setValue("");
         }
 
-        // update conf
-        //confZKManager.set(confNode.getEnv(), confNode.getKey(), confNode.getValue());
-
         existNode.setTitle(confNode.getTitle());
         existNode.setValue(confNode.getValue());
         int ret = confNodeDao.update(existNode);
@@ -270,7 +253,7 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         ConfNodeLog nodeLog = new ConfNodeLog();
         nodeLog.setEnv(existNode.getEnv());
         nodeLog.setKey(existNode.getKey());
-        nodeLog.setTitle(existNode.getTitle() + "(配置更新)" );
+        nodeLog.setTitle(existNode.getTitle() + "(配置更新)");
         nodeLog.setValue(existNode.getValue());
         nodeLog.setOptuser(loginUser.getUsername());
         confNodeLogDao.add(nodeLog);
@@ -341,39 +324,27 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 		return new Result<String>(Result.SUCCESS.getCode(), logContent);
 	}*/
 
-
     // ---------------------- rest api ----------------------
 
     @Override
     public Result<Map<String, String>> find(String accessToken, String env, List<String> keys) {
 
         // valid
-        if (this.accessToken!=null && this.accessToken.trim().length()>0 && !this.accessToken.equals(accessToken)) {
+        if (this.accessToken != null && this.accessToken.trim().length() > 0 && !this.accessToken.equals(accessToken)) {
             return new Result<Map<String, String>>(Result.FAIL.getCode(), "AccessToken Invalid.");
         }
-        if (env==null || env.trim().length()==0) {
+        if (env == null || env.trim().length() == 0) {
             return new Result<>(Result.FAIL.getCode(), "env Invalid.");
         }
-        if (keys==null || keys.size()==0) {
+        if (keys == null || keys.size() == 0) {
             return new Result<>(Result.FAIL.getCode(), "keys Invalid.");
         }
-		/*for (String key: keys) {
-			if (key==null || key.trim().length()<4 || key.trim().length()>100) {
-				return new Result<>(Result.FAIL.getCode(), "Key Invalid[4~100]");
-			}
-			if (!RegexUtil.matches(RegexUtil.abc_number_line_point_pattern, key)) {
-				return new Result<>(Result.FAIL.getCode(), "Key format Invalid");
-			}
-		}*/
 
-        // result
         Map<String, String> result = new HashMap<String, String>();
-        for (String key: keys) {
-
+        for (String key : keys) {
             // get val
             String value = null;
-            if (key==null || key.trim().length()<4 || key.trim().length()>100
-                || !RegexUtil.matches(RegexUtil.abc_number_line_point_pattern, key) ) {
+            if (key == null || key.trim().length() < 4 || key.trim().length() > 100 || !RegexUtil.matches(RegexUtil.abc_number_line_point_pattern, key)) {
                 // invalid key, pass
             } else {
                 value = getFileConfData(env, key);
@@ -392,20 +363,20 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     }
 
     @Override
-    public DeferredResult<Result<String>>   monitor(String accessToken, String env, List<String> keys) {
+    public DeferredResult<Result<String>> monitor(String accessToken, String env, List<String> keys) {
         // init
         DeferredResult deferredResult = new DeferredResult(confBeatTime * 1000L, new Result<>(Result.SUCCESS_CODE, "Monitor timeout, no key updated."));
 
         // valid
-        if (this.accessToken!=null && this.accessToken.trim().length()>0 && !this.accessToken.equals(accessToken)) {
+        if (this.accessToken != null && this.accessToken.trim().length() > 0 && !this.accessToken.equals(accessToken)) {
             deferredResult.setResult(new Result<>(Result.FAIL.getCode(), "AccessToken Invalid."));
             return deferredResult;
         }
-        if (env==null || env.trim().length()==0) {
+        if (env == null || env.trim().length() == 0) {
             deferredResult.setResult(new Result<>(Result.FAIL.getCode(), "env Invalid."));
             return deferredResult;
         }
-        if (keys==null || keys.size()==0) {
+        if (keys == null || keys.size() == 0) {
             deferredResult.setResult(new Result<>(Result.FAIL.getCode(), "keys Invalid."));
             return deferredResult;
         }
@@ -421,11 +392,10 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
 		}*/
 
         // monitor by client
-        for (String key: keys) {
+        for (String key : keys) {
 
             // invalid key, pass
-            if (key==null || key.trim().length()<4 || key.trim().length()>100
-                || !RegexUtil.matches(RegexUtil.abc_number_line_point_pattern, key) ) {
+            if (key == null || key.trim().length() < 4 || key.trim().length() > 100 || !RegexUtil.matches(RegexUtil.abc_number_line_point_pattern, key)) {
                 continue;
             }
 
@@ -444,10 +414,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         return deferredResult;
     }
 
-
-
-
-
     // ---------------------- start stop ----------------------
 
     @Override
@@ -460,16 +426,13 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         stopThread();
     }
 
-
     // ---------------------- thread ----------------------
-
     private ExecutorService executorService = Executors.newCachedThreadPool();
     private volatile boolean executorStoped = false;
-
     private volatile List<Integer> readedMessageIds = Collections.synchronizedList(new ArrayList<Integer>());
-
     private Map<String, List<DeferredResult>> confDeferredResultMap = new ConcurrentHashMap<>();
 
+    /**开始监听  long-polling*/
     public void startThead() throws Exception {
 
         /**
@@ -483,16 +446,15 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                     try {
                         // new message, filter readed
                         List<ConfNodeMsg> messageList = confNodeMsgDao.findMsg(readedMessageIds);
-                        if (messageList!=null && messageList.size()>0) {
-                            for (ConfNodeMsg message: messageList) {
+                        if (messageList != null && messageList.size() > 0) {
+                            for (ConfNodeMsg message : messageList) {
                                 readedMessageIds.add(message.getId());
                                 // sync file
                                 setFileConfData(message.getEnv(), message.getKey(), message.getValue());
                             }
                         }
-
-                        // clean old message;
-                        if ( (System.currentTimeMillis()/1000) % confBeatTime ==0) {
+                        // clean old message;  30秒
+                        if ((System.currentTimeMillis() / 1000) % confBeatTime == 0) {
                             confNodeMsgDao.cleanMessage(confBeatTime);
                             readedMessageIds.clear();
                         }
@@ -512,7 +474,6 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             }
         });
 
-
         /**
          *  sync total conf-data, db + file      (1+N/30s)
          *
@@ -522,11 +483,10 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
             @Override
             public void run() {
                 while (!executorStoped) {
-
                     // align to beattime
                     try {
-                        long sleepSecond = confBeatTime - (System.currentTimeMillis()/1000)%confBeatTime;
-                        if (sleepSecond>0 && sleepSecond<confBeatTime) {
+                        long sleepSecond = confBeatTime - (System.currentTimeMillis() / 1000) % confBeatTime;
+                        if (sleepSecond > 0 && sleepSecond < confBeatTime) {
                             TimeUnit.SECONDS.sleep(sleepSecond);
                         }
                     } catch (Exception e) {
@@ -540,10 +500,9 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                         int offset = 0;
                         int pagesize = 1000;
                         List<String> confDataFileList = new ArrayList<>();
-
                         List<ConfNode> confNodeList = confNodeDao.pageList(offset, pagesize, null, null, null);
-                        while (confNodeList!=null && confNodeList.size()>0) {
-                            for (ConfNode confNoteItem: confNodeList) {
+                        while (confNodeList != null && confNodeList.size() > 0) {
+                            for (ConfNode confNoteItem : confNodeList) {
                                 // sync file
                                 String confDataFile = setFileConfData(confNoteItem.getEnv(), confNoteItem.getKey(), confNoteItem.getValue());
                                 // collect confDataFile
@@ -570,54 +529,43 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
                 }
             }
         });
-
-
-
     }
 
-    private void stopThread(){
+    private void stopThread() {
         executorStoped = true;
         executorService.shutdownNow();
     }
 
-
     // ---------------------- file opt ----------------------
 
     // get
-    public String getFileConfData(String env, String key){
-
+    public String getFileConfData(String env, String key) {
         // fileName
         String confFileName = parseConfDataFileName(env, key);
-
         // read
         Properties existProp = PropUtil.loadFileProp(confFileName);
-        if (existProp!=null && existProp.containsKey("value")) {
+        if (existProp != null && existProp.containsKey("value")) {
             return existProp.getProperty("value");
         }
         return null;
     }
 
-    private String parseConfDataFileName(String env, String key){
+    private String parseConfDataFileName(String env, String key) {
         // fileName
-        String fileName = confDataFilePath
-            .concat(File.separator).concat(env)
-            .concat(File.separator).concat(key)
-            .concat(".properties");
+        String fileName = confDataFilePath.concat(File.separator).concat(env).concat(File.separator).concat(key).concat(".properties");
         return fileName;
     }
 
-    // set
-    private String setFileConfData(String env, String key, String value){
+    /**
+     * 本地磁盘写入
+     */
+    private String setFileConfData(String env, String key, String value) {
 
         // fileName
         String confFileName = parseConfDataFileName(env, key);
-
         // valid repeat update
         Properties existProp = PropUtil.loadFileProp(confFileName);
-        if (existProp != null
-            && value!=null
-            && value.equals(existProp.getProperty("value"))
-            ) {
+        if (existProp != null && value != null && value.equals(existProp.getProperty("value"))) {
             return new File(confFileName).getPath();
         }
 
@@ -630,13 +578,13 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
         }
 
         PropUtil.writeFileProp(prop, confFileName);
-        log.info(">>>>>>>>>>> xxl-conf, setFileConfData: confFileName={}, value={}", confFileName, value);
+        log.info(">>>>>>>>>>> wywhdgg-conf, setFileConfData: confFileName={}, value={}", confFileName, value);
 
         // brocast monitor client
         List<DeferredResult> deferredResultList = confDeferredResultMap.get(confFileName);
         if (deferredResultList != null) {
             confDeferredResultMap.remove(confFileName);
-            for (DeferredResult deferredResult: deferredResultList) {
+            for (DeferredResult deferredResult : deferredResultList) {
                 deferredResult.setResult(new Result<>(Result.SUCCESS_CODE, "Monitor key update."));
             }
         }
@@ -645,31 +593,29 @@ public class ConfNodeServiceImpl implements  ConfNodeService, InitializingBean, 
     }
 
     // clean
-    public void cleanFileConfData(List<String> confDataFileList){
+    public void cleanFileConfData(List<String> confDataFileList) {
         filterChildPath(new File(confDataFilePath), confDataFileList);
     }
 
-    public void filterChildPath(File parentPath, final List<String> confDataFileList){
-        if (!parentPath.exists() || parentPath.list()==null || parentPath.list().length==0) {
+    public void filterChildPath(File parentPath, final List<String> confDataFileList) {
+        if (!parentPath.exists() || parentPath.list() == null || parentPath.list().length == 0) {
             return;
         }
         File[] childFileList = parentPath.listFiles();
-        for (File childFile: childFileList) {
+        for (File childFile : childFileList) {
+            //测试此抽象路径名表示的文件是否为普通文件。如果文件不是目录，则该文件是正常的
             if (childFile.isFile() && !confDataFileList.contains(childFile.getPath())) {
                 childFile.delete();
-
-                log.info(">>>>>>>>>>> xxl-conf, cleanFileConfData, ConfDataFile={}", childFile.getPath());
+                log.info(">>>>>>>>>>> wywhdgg-conf, cleanFileConfData, ConfDataFile={}", childFile.getPath());
             }
+            //测试此抽象路径名表示的文件是否为目录
             if (childFile.isDirectory()) {
-                if (parentPath.listFiles()!=null && parentPath.listFiles().length>0) {
+                if (parentPath.listFiles() != null && parentPath.listFiles().length > 0) {
                     filterChildPath(childFile, confDataFileList);
                 } else {
                     childFile.delete();
                 }
-
             }
         }
-
     }
-    
 }

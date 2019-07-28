@@ -31,7 +31,6 @@ public class PropUtil {
     }
 
     public static Properties loadClassPathProp(String propertyFileName) {
-
         InputStream in = null;
         try {
             in = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFileName);
@@ -56,7 +55,12 @@ public class PropUtil {
         return null;
     }
 
-
+    /**
+     * 加载本地磁盘
+     *
+     * @param propertyFileName
+     * @return
+     */
     public static Properties loadFileProp(String propertyFileName) {
         InputStream in = null;
         try {
@@ -101,16 +105,12 @@ public class PropUtil {
         FileOutputStream fileOutputStream = null;
         try {
 
-            // mk file
             File file = new File(filePathName);
             if (!file.exists()) {
                 file.getParentFile().mkdirs();
             }
-
-            // write data
             fileOutputStream = new FileOutputStream(file, false);
             properties.store(new OutputStreamWriter(fileOutputStream, "utf-8"), null);
-            //properties.store(new FileWriter(filePathName), null);
             return true;
         } catch (IOException e) {
             log.error(e.getMessage(), e);
