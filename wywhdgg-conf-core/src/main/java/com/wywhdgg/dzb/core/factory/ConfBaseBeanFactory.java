@@ -9,18 +9,18 @@ import com.wywhdgg.dzb.core.listener.impl.BeanRefreshConfListener;
 /**
  * @author: dongzhb
  * @date: 2019/7/24
- * @Description:
+ * @Description: 初始化bean
  */
 public class ConfBaseBeanFactory {
     /**
      * 初始化环境
      */
     public static void init(String adminAddress, String env, String accessToken, String mirrorfile) {
-        /**init remote util*/
+        /**初始化远程调用的地址*/
         ConfRemote.init(adminAddress, env, accessToken);
-        /**init mirror util*/
+        /**初始化本地文件*/
         ConfMirror.init(mirrorfile);
-        /***/
+        /**初始化缓存 */
         ConfLocalCache.init();
         /**init cache + thread, cycle refresh + monitor*/
         ConfListenerFactory.addListener(null, new BeanRefreshConfListener());

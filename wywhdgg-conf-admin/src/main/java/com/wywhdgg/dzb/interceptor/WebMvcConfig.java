@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *@author dzb
  *@date 2019/7/21 22:27
  *@Description:  WebMvcConfigurerAdapter 废弃
- * 拦截器 -配置列表
+ * 拦截器 -配置列表  跨域设置
  *@version 1.0
  */
 @Configuration

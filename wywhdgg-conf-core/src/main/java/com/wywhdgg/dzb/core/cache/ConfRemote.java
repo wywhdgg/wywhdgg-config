@@ -64,7 +64,7 @@ public class ConfRemote {
     }
 
     /**
-     * find
+     * 批量获取keys值
      * @param keys
      */
     public static Map<String, String> find(Set<String> keys) {
@@ -86,7 +86,7 @@ public class ConfRemote {
     }
 
     /**
-     * find
+     * 获取单个key值
      * @param key
      */
     public static String find(String key) {
@@ -101,7 +101,6 @@ public class ConfRemote {
      * 监控显示
      */
     public static boolean monitor(Set<String> keys) {
-
         for (String adminAddressUrl : ConfRemote.adminAddressArr) {
             // url + param
             String url = adminAddressUrl + "/conf/monitor";

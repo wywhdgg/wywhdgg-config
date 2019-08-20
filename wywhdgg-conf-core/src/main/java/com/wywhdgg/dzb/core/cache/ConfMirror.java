@@ -31,7 +31,6 @@ public class ConfMirror {
      */
     public static Map<String, String> readConfMirror() {
         Properties mirrorProp = PropUtil.loadFileProp(mirrorfile);
-        log.info("mirrorProp={}", mirrorProp);
         if (Objects.nonNull(mirrorProp) && !CollectionUtils.isEmpty(mirrorProp.stringPropertyNames())) {
             Map<String, String> mirrorConfData = new HashMap<>();
             for (String key : mirrorProp.stringPropertyNames()) {

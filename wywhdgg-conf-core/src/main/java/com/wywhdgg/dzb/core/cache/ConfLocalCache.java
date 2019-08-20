@@ -54,6 +54,7 @@ public class ConfLocalCache {
                     try {
                         //开启保存方法，本地镜像双向保存
                         refreshCacheAndMirror();
+                        log.info(">>>>>>>>>>>>> refreshCacheAndMirror");
                     } catch (Exception e) {
                         if (!refreshThreadStop && !(e instanceof InterruptedException)) {
                             log.error(">>>>>>>>>> wywhdgg-conf, refresh thread error.");
@@ -66,18 +67,14 @@ public class ConfLocalCache {
         });
         /**
          1.Thread.setDaemon(boolean on):设置为守护线程或者用户线程。
-
          2.通过Thread.setDaemon(false)设置为用户线程,用于为系统中的其它对象和线程提供服务；
          通过Thread.setDaemon(true)设置为守护线程,在没有用户线程可服务时会自动离开;如果不设置此属性，默认为用户线程。
-
          3.setDaemon需要在start方法调用之前使用
-
          4.用Thread.isDaemon()来返回是否是守护线程
          **/
         refreshThread.setDaemon(true);
         refreshThread.start();
-
-        log.info(">>>>>>>>>> wywhdgg-conf, ConfLocalCacheConf init success.");
+        log.info(">>>>>>>>>> wywhdgg-conf, ConfLocalCacheConf init success");
     }
 
     /**
@@ -85,7 +82,7 @@ public class ConfLocalCache {
      */
     private static void refreshCacheAndMirror() throws InterruptedException {
         if (localCacheRepository.size() == 0) {
-            TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(3);
             return;
         }
 
@@ -103,7 +100,6 @@ public class ConfLocalCache {
             if (remoteDataMap != null && remoteDataMap.size() > 0) {
                 for (String remoteKey : remoteDataMap.keySet()) {
                     String remoteData = remoteDataMap.get(remoteKey);
-
                     CacheNode existNode = localCacheRepository.get(remoteKey);
                     if (existNode != null && existNode.getValue() != null && existNode.getValue().equals(remoteData)) {
                         log.debug(">>>>>>>>>> wywhdgg-conf: RELOAD unchange-pass [{}].", remoteKey);
@@ -144,7 +140,11 @@ public class ConfLocalCache {
     }
 
     /**
-     * 线程销毁 refreshThread 内部通过minitor实时监听配置变更，但是只会监听LocalCache中存在的key列表。 当出现 SET 操作时，说明LocalCache中出现的新配置，但是该新配置key并没有纳入monitor实时监听， 因此需要中断线程，从而重新monitor全量的key列表。
+     * 线程销毁 refreshThread 内部通过minitor实时监听配置变更，
+     * 但是只会监听LocalCache中存在的key列表。
+     * 当出现 SET 操作时，说明LocalCache中出现的新配置，
+     * 但是该新配置key并没有纳入monitor实时监听，
+     * 因此需要中断线程，从而重新monitor全量的key列表。
      */
     public static void destroy() {
         if (refreshThread != null) {
