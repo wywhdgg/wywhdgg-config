@@ -33,11 +33,14 @@ public class ConfLocalCache {
         Map<String, String> mirrorConfData = ConfMirror.readConfMirror();
 
         if (!CollectionUtils.isEmpty(mirrorConfData)) {
+            //DB文件预加载
             remoteConfData = ConfRemote.find(mirrorConfData.keySet());
+            //本地文件
             preConfData.putAll(mirrorConfData);
         }
 
         if (remoteConfData != null && remoteConfData.size() > 0) {
+            //
             preConfData.putAll(remoteConfData);
         }
         if (preConfData != null && preConfData.size() > 0) {

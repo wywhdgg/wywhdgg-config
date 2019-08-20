@@ -3,9 +3,6 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/wywhdgg-conf-spingmvc" />
-    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-jfinal" />
-    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-nutz" />
-    <file type="web" url="file://$PROJECT_DIR$/../xxl-conf/xxl-conf-samples/xxl-conf-sample-spring" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

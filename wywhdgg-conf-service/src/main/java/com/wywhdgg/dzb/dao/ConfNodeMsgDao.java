@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ConfNodeMsgDao {
 
-	public void add(ConfNodeMsg xxlConfNode);
+	public void add(ConfNodeMsg confNode);
 
 	public List<ConfNodeMsg> findMsg(@Param("readedMsgIds") List<Integer> readedMsgIds);
 

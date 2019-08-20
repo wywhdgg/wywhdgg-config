@@ -67,10 +67,17 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
         this.mirrorfile = mirrorfile;
     }
 
+
+
+
     /**
-     * 在bean实例化之后， 通过构造函数或工厂方法， 但在Spring属性填充（来自显式属性或自动装配） 之前执行操作。 url:https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/InstantiationAwareBeanPostProcessorAdapter.html
+     *在bean实例化之后，
+     * 通过构造函数或工厂方法，
+     * 但在Spring属性填充（来自显式属性或自动装配）
+     * 之前执行操作。
+     * url:https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/InstantiationAwareBeanPostProcessorAdapter.html
      * 注释方式
-     **/
+     * **/
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
         // 1、Annotation('@Conf')：resolves conf + watch
@@ -86,7 +93,6 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
                         // resolves placeholders
                         BeanRefreshConfListener.BeanField beanField = new BeanRefreshConfListener.BeanField(beanName, propertyName);
                         refreshBeanField(beanField, confValue, bean);
-
                         // watch
                         if (conf.callback()) {
                             BeanRefreshConfListener.addBeanField(confKey, beanField);
@@ -103,8 +109,8 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      */
     @Override
     public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
+        log.info("xml  begin init...... ");
         // 2、XML('$XxlConf{...}')：resolves placeholders + watch
-       // log.info("beanName={}, this.beanMame={}", beanName, this.beanName);
         if (!beanName.equals(this.beanName)) {
             PropertyValue[] pvArray = pvs.getPropertyValues();
             for (PropertyValue pv : pvArray) {
@@ -136,12 +142,13 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
     }
 
     /**
-     * 在BeanFactory设置了所有提供的bean属性（并且满足BeanFactoryAware和ApplicationContextAware）之后， 由BeanFactory调用。 此方法允许bean实例仅在设置了所有bean属性时执行初始化，并在配置错误时抛出异常。
-     * https://docs.spring.io/spring/docs/1.2.x/javadoc-api/org/springframework/beans/factory/InitializingBean.html 初始化配置
+     * 在BeanFactory设置了所有提供的bean属性（并且满足BeanFactoryAware和ApplicationContextAware）之后，
+     * 由BeanFactory调用。 此方法允许bean实例仅在设置了所有bean属性时执行初始化，并在配置错误时抛出异常。
+     * https://docs.spring.io/spring/docs/1.2.x/javadoc-api/org/springframework/beans/factory/InitializingBean.html
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info(">>>>>>>config factory init -------------");
+        log.info("factory begin init...... ");
         ConfBaseBeanFactory.init(adminAddress, env, accessToken, mirrorfile);
     }
 
@@ -151,7 +158,7 @@ public class ConfFactory extends InstantiationAwareBeanPostProcessorAdapter impl
      * */
     @Override
     public void destroy() throws Exception {
-        log.info(">>>>>>> beanFactory  is destory ----------------");
+        log.info("object is destory ");
         ConfBaseBeanFactory.destroy();
     }
 
